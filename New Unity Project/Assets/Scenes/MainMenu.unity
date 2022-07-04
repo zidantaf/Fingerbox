@@ -2615,11 +2615,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-<<<<<<< Updated upstream
   m_Text: fingerbox
-=======
-  m_Text: FINGERBOX
->>>>>>> Stashed changes
 --- !u!222 &457803831
 CanvasRenderer:
   m_ObjectHideFlags: 0
