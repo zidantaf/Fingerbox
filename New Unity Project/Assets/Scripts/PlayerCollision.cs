@@ -6,12 +6,15 @@ using System.Collections.Generic;
 
 public class PlayerCollision : MonoBehaviour
 {
+    public Transform transfroms;
+
     public PlayerMovement pmovement;
     public Rigidbody rb;
     public float boostspeed = 50;
     public Rigidbody rbjump;
     public GameObject dug;
     public GameObject myCam;
+    public GameObject Newest;
 
     public GameObject completeLevelUi;
     public GameObject BGSong;
@@ -21,6 +24,7 @@ public class PlayerCollision : MonoBehaviour
     private int actualScore;
     public int timer;
     public Text CountDownText;
+    public Text ScoreText;
     public Text HighscoreText;
 
     public void OnCollisionEnter(Collision collisionInfo)
@@ -83,6 +87,24 @@ public class PlayerCollision : MonoBehaviour
 
     private void Update()
     {
+        if (isFinish == false)
+        {
+            if (transfroms.position.z >= 211)
+            {
+                Restart();
+            }
+
+            if (transfroms.position.x >= 15)
+            {
+                Restart();
+            }
+
+            if (transfroms.position.x <= -15)
+            {
+                Restart();
+            }
+        }
+
         if (currentTime <= 5) 
         {
             CountDownText.color = Color.red; 
@@ -101,11 +123,13 @@ public class PlayerCollision : MonoBehaviour
     public void StopTimer()
     {
         actualScore = timer + currentTime;
+        ScoreText.text = "SCORE : " + actualScore;
 
         CancelInvoke();
 
         if (PlayerPrefs.GetInt("Highscore") < actualScore)
         {
+            StartCoroutine("NewHighscore");
             SetHighScore();
         }
     }
@@ -158,6 +182,13 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    private float waiting = 2.1f;
+
+    IEnumerator NewHighscore()
+    {
+        yield return new WaitForSeconds(waiting);
+        Newest.SetActive(true);
+    }
 }
 
 
