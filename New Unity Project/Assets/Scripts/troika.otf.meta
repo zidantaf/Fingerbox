@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 0e805d318577a684dbcf674cd6792205
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Troika
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: ca0a75d13e2e7e94ab185db59f537b6a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
