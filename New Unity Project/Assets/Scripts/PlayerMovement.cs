@@ -59,4 +59,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    private float empat = 4.5f;
+    public void TeleportFinish()
+    {
+
+        transform.position = new Vector3(0, empat, 173);
+    }
+
 }

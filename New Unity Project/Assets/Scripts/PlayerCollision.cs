@@ -27,6 +27,14 @@ public class PlayerCollision : MonoBehaviour
     public Text ScoreText;
     public Text HighscoreText;
 
+    public GameObject OneStar;
+    public GameObject TwoStar;
+    public GameObject ThreeStar;
+
+    private float starminim1 = 21.0f;
+    private float starminim2 = 23.0f;
+    private float starminim3 = 25.0f;
+
     public void OnCollisionEnter(Collision collisionInfo)
     {
         
@@ -41,10 +49,28 @@ public class PlayerCollision : MonoBehaviour
 
         if (collisionInfo.collider.name == "EndLine")
         {
+            StartCoroutine("FreezeP");
+            
             isFinish = true;
             LevelComplete();
             StopCoroutine(WaitBeforeShow());
             StopTimer();
+
+            if (actualScore > starminim1)
+            {
+                print("1 Star Earned.");
+                StartCoroutine(OneS());
+            }
+            if (actualScore > starminim2)
+            {
+                print("2 Star Earned.");
+                StartCoroutine(TwoS());
+            }
+            if (actualScore > starminim3)
+            {
+                print("3 Star Earned.");
+                StartCoroutine(ThreeS());
+            }
         }
 
         if (collisionInfo.collider.name == "FinishLine")
@@ -162,11 +188,13 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    
     public void LevelComplete()
     {
         completeLevelUi.SetActive(true);
         BGSong.SetActive(false);
     }
+
     public void Restart()
     {
         Time.timeScale = 1f;
@@ -183,11 +211,41 @@ public class PlayerCollision : MonoBehaviour
     }
 
     private float waiting = 2.1f;
+    private float waiting2 = 1f;
+
+    private float star1 = 2.0f;
+    private float star2 = 2.25f;
+    private float star3 = 2.5f;
 
     IEnumerator NewHighscore()
     {
         yield return new WaitForSeconds(waiting);
         Newest.SetActive(true);
+    }
+
+    IEnumerator OneS()
+    {
+        yield return new WaitForSeconds(star1);
+        OneStar.SetActive(true);
+    }
+
+    IEnumerator TwoS()
+    {
+        yield return new WaitForSeconds(star2);
+        TwoStar.SetActive(true);
+    }
+
+    IEnumerator ThreeS()
+    {
+        yield return new WaitForSeconds(star3);
+        ThreeStar.SetActive(true);
+    }
+
+    IEnumerator FreezeP()
+    {
+        yield return new WaitForSeconds(waiting2);
+
+        rb.constraints = RigidbodyConstraints.FreezePosition;
     }
 }
 
