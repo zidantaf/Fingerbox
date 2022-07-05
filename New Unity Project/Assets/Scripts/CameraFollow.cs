@@ -1,15 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraFollow : MonoBehaviour
 {
     public Transform playercoor;
     public Vector3 jarak;
 
-    void Update ()
+    public void Update ()
     {
         transform.position = playercoor.position + jarak ; 
+
     }
-
-    
-
 }

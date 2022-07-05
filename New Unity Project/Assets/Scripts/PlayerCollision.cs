@@ -31,9 +31,9 @@ public class PlayerCollision : MonoBehaviour
     public GameObject TwoStar;
     public GameObject ThreeStar;
 
-    private float starminim1 = 21.0f;
-    private float starminim2 = 23.0f;
-    private float starminim3 = 25.0f;
+    public float starminim1 = 21.0f;
+    public float starminim2 = 23.0f;
+    public float starminim3 = 25.0f;
 
     public void OnCollisionEnter(Collision collisionInfo)
     {
@@ -56,17 +56,22 @@ public class PlayerCollision : MonoBehaviour
             StopCoroutine(WaitBeforeShow());
             StopTimer();
 
-            if (actualScore > starminim1)
+            if (actualScore >= starminim1)
             {
-                print("1 Star Earned.");
                 StartCoroutine(OneS());
             }
-            if (actualScore > starminim2)
+            if (actualScore >= starminim2)
             {
                 print("2 Star Earned.");
                 StartCoroutine(TwoS());
+
+                if (actualScore >= starminim3)
+                {
+                    print ("Full Stars!");
+                }
+                
             }
-            if (actualScore > starminim3)
+            if (actualScore >= starminim3)
             {
                 print("3 Star Earned.");
                 StartCoroutine(ThreeS());
@@ -105,7 +110,6 @@ public class PlayerCollision : MonoBehaviour
     void Start()
     {
         currentTime = timer + 1;
-        StartTimer();
         InvokeRepeating("IncrinentTime", 0, 1);
 
         HighscoreText.text = "HIGHSCORE : " + PlayerPrefs.GetInt("Highscore").ToString();
@@ -141,10 +145,7 @@ public class PlayerCollision : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
-    public void StartTimer()
-    {
-
-    }
+    
 
     public void StopTimer()
     {

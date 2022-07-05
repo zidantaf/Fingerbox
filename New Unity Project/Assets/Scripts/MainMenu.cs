@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame ()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("Level03"); // Nanti diisi Scene Level
     }
 
     public void QuitGame ()
@@ -19,7 +19,6 @@ public class MainMenu : MonoBehaviour
 
     public void Credits()
     {
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+        SceneManager.LoadScene("MainCredits");
     }
 }
