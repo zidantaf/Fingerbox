@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame ()
-    {
-        SceneManager.LoadScene("Level03"); // Nanti diisi Scene Level
-    }
-
     public void QuitGame ()
     {
         Debug.Log("Fingerbox Closed.");
@@ -20,5 +15,10 @@ public class MainMenu : MonoBehaviour
     public void Credits()
     {
         SceneManager.LoadScene("MainCredits");
+    }
+
+    public void PlayLevel03 ()
+    {
+        SceneManager.LoadScene("Level03");
     }
 }
