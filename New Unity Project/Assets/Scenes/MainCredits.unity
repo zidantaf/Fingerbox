@@ -625,7 +625,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -607}
+  m_AnchoredPosition: {x: 0, y: -469.3}
   m_SizeDelta: {x: 981.103, y: 3020.6226}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1193553287
@@ -661,10 +661,69 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "INSPIRED BY\nBrackeys\nCoco Code\nJason Weimann\nAndy Lukito\nSpeedTutor\n\nADDITIONAL
-    SUPPORT\nM. Ilham Arifin\n\nMUSIC & SOUND EFFECT\nZapsplat.com\n\nFONTS\nLeague
-    Spartan\nTroika\n\nGAME ENGINE\nUnity\n\nSUPPORT SOFTWARE\nAudacity\nAdobe Photoshop\n\nINSTAGRAM\n@zidantaf\n\n\nTHANKS
-    FOR PLAYING\n MY FIRST GAME! <3\n\n"
+  m_Text: 'INSPIRED BY
+
+    Brackeys
+
+    Coco Code
+
+    Jason Weimann
+
+    Andy
+    Lukito
+
+    SpeedTutor
+
+
+    ADDITIONAL SUPPORT
+
+    M. Ilham Arifin
+
+
+    MUSIC
+    & SOUND EFFECT
+
+    Zapsplat.com
+
+
+    FONTS
+
+    League Spartan
+
+    Troika
+
+
+    GAME
+    ENGINE
+
+    Unity
+
+
+    SUPPORT SOFTWARE
+
+    Audacity
+
+    Adobe Photoshop
+
+
+    INSTAGRAM
+
+    @zidantaf
+
+
+
+    Thank
+    you for
+
+    playing my first game.
+
+
+    See you in the next game!
+
+
+    -Zidan
+
+'
 --- !u!222 &1193553288
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -14,11 +14,24 @@ public class MainMenu : MonoBehaviour
 
     public void Credits()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainCredits");
+    }
+
+    public void MainMenus()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
     }
 
     public void PlayLevel03 ()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Level03");
+    }
+
+    public void ResetSave()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
