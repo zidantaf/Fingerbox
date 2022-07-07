@@ -30,9 +30,4 @@ public class MainMenu : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("Level03");
     }
-
-    public void ResetSave()
-    {
-        PlayerPrefs.DeleteAll();
-    }
 }

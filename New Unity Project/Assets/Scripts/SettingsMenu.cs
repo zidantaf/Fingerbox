@@ -17,15 +17,19 @@ public class SettingsMenu : MonoBehaviour
 
     public void SetVolume(float volume)
     {
+        PlayerPrefs.SetFloat("MasterX", volume);
         master.audioMixer.SetFloat("MasterX", volume);
+        
     }
 
     public void SetVolumeMusic (float volume)
     {
+        PlayerPrefs.SetFloat("MusicX", volume);
         music.audioMixer.SetFloat("MusicX", volume);
     }
     public void SetVolumeSFX (float volume)
     {
+        PlayerPrefs.SetFloat("EffectX", volume);
         sefex.audioMixer.SetFloat("EffectX", volume);
     }
 
@@ -39,10 +43,4 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
     }
-
-    public void SaveAllSettings()
-    {
-
-    }
-
 }

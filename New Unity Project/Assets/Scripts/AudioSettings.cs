@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEngine.Audio;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -12,24 +10,42 @@ public class AudioSettings : MonoBehaviour
 
     public Text masterValueText;
 
+    private static readonly string FirstPlay = "FirstPlay";
+    private int firstPlayInt;
+    private float sfxsliderFirstFloat = 11.5f;
 
-    void Start()
+
+    public void Start()
     {
-        float masterValue = masterslider.value;
+        firstPlayInt = PlayerPrefs.GetInt("FirstPlay");
+
+
         masterslider.value = PlayerPrefs.GetFloat("MasterX");
 
-        float musicValue = musicslider.value;
         musicslider.value = PlayerPrefs.GetFloat("MusicX");
 
-        float sfxValue = sfxslider.value;
         sfxslider.value = PlayerPrefs.GetFloat("EffectX");
 
         qualitygraphic.value = PlayerPrefs.GetInt("_qualityindex");
 
+        if (firstPlayInt == 0)
+        {
+            PlayerPrefs.SetFloat("EffectX", sfxsliderFirstFloat);
+            PlayerPrefs.SetInt(FirstPlay, -1);
+        }
+
     }
 
-    public void Update()
+    public void ResetSave()
     {
-        masterValueText.text = PlayerPrefs.GetFloat("MasterX").ToString("0");
+        PlayerPrefs.DeleteAll();
+
+        masterslider.value = PlayerPrefs.GetFloat("MasterX");
+
+        musicslider.value = PlayerPrefs.GetFloat("MusicX");
+
+        sfxslider.value = 11.5f;
+
+        qualitygraphic.value = PlayerPrefs.GetInt("_qualityindex");
     }
 }
