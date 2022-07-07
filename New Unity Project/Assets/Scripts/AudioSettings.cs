@@ -5,44 +5,31 @@ using UnityEngine;
 
 public class AudioSettings : MonoBehaviour
 {
-    [SerializeField] private Slider masterslider;
-    [SerializeField] private Slider musicslider;
-    [SerializeField] private Slider sfxslider;
-    [SerializeField] private Dropdown qualitygraphic;
-    public void Start ()
-    {
-        LoadValues();
-    }
+    public Slider masterslider;
+    public Slider musicslider;
+    public Slider sfxslider;
+    public Dropdown qualitygraphic;
 
-    public void SaveVolumeButton()
+    public Text masterValueText;
+
+
+    void Start()
     {
         float masterValue = masterslider.value;
-        PlayerPrefs.SetFloat("MasterX", masterValue);
+        masterslider.value = PlayerPrefs.GetFloat("MasterX");
 
         float musicValue = musicslider.value;
-        PlayerPrefs.SetFloat("MusicX", musicValue);
+        musicslider.value = PlayerPrefs.GetFloat("MusicX");
 
         float sfxValue = sfxslider.value;
-        PlayerPrefs.SetFloat("EffectX", sfxValue);
+        sfxslider.value = PlayerPrefs.GetFloat("EffectX");
 
-        int qualityIndex = qualitygraphic.value;
-        PlayerPrefs.SetInt("_qualityindex", qualityIndex);
+        qualitygraphic.value = PlayerPrefs.GetInt("_qualityindex");
 
-        LoadValues();
     }
 
-    public void LoadValues()
+    public void Update()
     {
-        float masterValue = PlayerPrefs.GetFloat("MasterX");
-        masterslider.value = masterValue;
-
-        float musicValue = PlayerPrefs.GetFloat("MusicX");
-        musicslider.value = musicValue;
-
-        float sfxValue = PlayerPrefs.GetFloat("EffectX");
-        sfxslider.value = sfxValue;
-
-        qualitygraphic.value = PlayerPrefs.GetInt("_qualityIndex");
-
+        masterValueText.text = PlayerPrefs.GetFloat("MasterX").ToString("0");
     }
 }

@@ -10,7 +10,12 @@ public class SettingsMenu : MonoBehaviour
     public AudioMixerGroup music;
     public AudioMixerGroup sefex;
 
-    public void SetVolume (float volume)
+    public Slider masterslider;
+    public Slider musicslider;
+    public Slider sfxslider;
+    public Dropdown qualitygraphic;
+
+    public void SetVolume(float volume)
     {
         master.audioMixer.SetFloat("MasterX", volume);
     }
@@ -35,5 +40,9 @@ public class SettingsMenu : MonoBehaviour
         Screen.fullScreen = isFullscreen;
     }
 
+    public void SaveAllSettings()
+    {
+
+    }
 
 }

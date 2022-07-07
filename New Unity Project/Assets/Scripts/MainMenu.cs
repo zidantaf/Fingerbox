@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
     public void QuitGame ()
     {
         Debug.Log("Fingerbox Closed.");

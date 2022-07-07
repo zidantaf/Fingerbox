@@ -29,11 +29,11 @@ public class AudioUIMainMenu : MonoBehaviour
 
     public void ClickMenu1()
     {
-        audioSource.PlayOneShot(click01, 0.1f);
+        audioSource.PlayOneShot(click01, 1f);
     }
     public void ClickMenu2()
     {
-        audioSource.PlayOneShot(click02, 0.1f);
+        audioSource.PlayOneShot(click02, 1f);
     }
     public void ClickCredits()
     {
