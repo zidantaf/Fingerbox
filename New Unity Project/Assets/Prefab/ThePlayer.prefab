@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8781104471517235906}
   - component: {fileID: 8781104471517235909}
   - component: {fileID: 8781104471517235908}
+  - component: {fileID: 6993307772841748417}
   m_Layer: 0
   m_Name: ThePlayer
   m_TagString: Untagged
@@ -142,12 +143,63 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8781104471517235935}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2a3180493b1f0194aacc9e04e5fb6a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transfroms: {fileID: 0}
   pmovement: {fileID: 8781104471517235909}
   rb: {fileID: 8781104471517235906}
   boostspeed: 30
   rbjump: {fileID: 0}
+  dug: {fileID: 0}
+  myCam: {fileID: 0}
+  Newest: {fileID: 0}
+  completeLevelUi: {fileID: 0}
+  BGSong: {fileID: 0}
+  currentTime: 0
+  timer: 0
+  CountDownText: {fileID: 0}
+  ScoreText: {fileID: 0}
+  HighscoreText: {fileID: 0}
+  OneStar: {fileID: 0}
+  TwoStar: {fileID: 0}
+  ThreeStar: {fileID: 0}
+  starminim1: 21
+  starminim2: 23
+  starminim3: 25
+--- !u!114 &6993307772841748417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781104471517235935}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cebf221c92035f84a9d3cfa30e3fcd89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  mark1: {fileID: 0}
+  pengarah0: {fileID: 0}
+  pengarah15: {fileID: 0}
+  pengarah1: {fileID: 0}
+  pengarah2: {fileID: 0}
+  pengarah3: {fileID: 0}
+  pengarah4: {fileID: 0}
+  pengarahMati: {fileID: 0}
+  timerCountdown: {fileID: 0}
+  pengarahAkhir: {fileID: 0}
+  pengarahAkhir2: {fileID: 0}
+  completeLevelUi: {fileID: 0}
+  BGSong: {fileID: 0}
+  rb: {fileID: 0}
+  isSekaliAkhir2: 0
+  OneStar: {fileID: 0}
+  TwoStar: {fileID: 0}
+  ThreeStar: {fileID: 0}
+  boostspeed: 50
+  timers: 0
+  CountDownText: {fileID: 0}

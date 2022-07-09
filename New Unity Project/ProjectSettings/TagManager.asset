@@ -8,6 +8,7 @@ TagManager:
   - FinishBox
   - Bouncy
   - Statics
+  - TriggerTutorial
   layers:
   - Default
   - TransparentFX

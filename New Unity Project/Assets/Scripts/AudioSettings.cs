@@ -38,6 +38,8 @@ public class AudioSettings : MonoBehaviour
 
     public void ResetSave()
     {
+        PlayerPrefs.SetInt(FirstPlay, 0);
+
         PlayerPrefs.DeleteAll();
 
         masterslider.value = PlayerPrefs.GetFloat("MasterX");

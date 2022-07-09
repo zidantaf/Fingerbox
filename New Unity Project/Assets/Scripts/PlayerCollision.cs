@@ -50,11 +50,12 @@ public class PlayerCollision : MonoBehaviour
         if (collisionInfo.collider.name == "EndLine")
         {
             StartCoroutine("FreezeP");
-            
+
             isFinish = true;
             LevelComplete();
             StopCoroutine(WaitBeforeShow());
             StopTimer();
+            HighscoreText.text = "HIGHSCORE : " + PlayerPrefs.GetInt("Highscore").ToString();
 
             if (actualScore >= starminim1)
             {
@@ -111,19 +112,12 @@ public class PlayerCollision : MonoBehaviour
     {
         currentTime = timer + 1;
         InvokeRepeating("IncrinentTime", 0, 1);
-
-        HighscoreText.text = "HIGHSCORE : " + PlayerPrefs.GetInt("Highscore").ToString();
     }
 
     private void Update()
     {
         if (isFinish == false)
         {
-            if (transfroms.position.z >= 211)
-            {
-                Restart();
-            }
-
             if (transfroms.position.x >= 15)
             {
                 Restart();

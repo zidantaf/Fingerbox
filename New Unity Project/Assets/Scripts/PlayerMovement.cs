@@ -11,6 +11,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody jumpscareRb;
     public float jumpscare = 10;
     public MeshRenderer meshRender;
+    
+    public float laju;
+    public float maxspeeeed;
 
     // Start is called before the first frame update
     public void Start ()
@@ -21,30 +24,24 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.AddForce(0, 0, speed * Time.deltaTime);
+        if (rb.velocity.magnitude > maxspeeeed)
+        {
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxspeeeed);
+        }
 
-        if (Input.GetKey("d"))
+        if (Input.GetKey("w") || Input.GetKey("up"))
+        {
+            rb.AddForce(0, 0, laju * Time.deltaTime, ForceMode.VelocityChange);
+        }
+
+        if (Input.GetKey("d") || Input.GetKey("right"))
         {
             // Geser kanan dan rotasi kanan
             rb.AddForce(geraksamping * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             tf.Rotate(0, rotasi, 0);
         }
 
-        if (Input.GetKey("right"))
-        {
-            // Geser kanan dan rotasi kanan
-            rb.AddForce(geraksamping * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            tf.Rotate(0, rotasi, 0);
-        }
-
-        if (Input.GetKey("a"))
-        {
-            // Geser kiri dan rotasi kiri
-            rb.AddForce(-geraksamping * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-            tf.Rotate(0, -rotasi, 0);
-        }
-
-        if (Input.GetKey("left"))
+        if (Input.GetKey("a") || Input.GetKey("left"))
         {
             // Geser kiri dan rotasi kiri
             rb.AddForce(-geraksamping * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
