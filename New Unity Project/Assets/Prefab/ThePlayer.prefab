@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8781104471517235904}
   - component: {fileID: 8781104471517235905}
   - component: {fileID: 8781104471517235934}
+  - component: {fileID: 3318862097813041593}
   - component: {fileID: 8781104471517235906}
   - component: {fileID: 8781104471517235909}
   - component: {fileID: 8781104471517235908}
@@ -44,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8781104471517235935}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &8781104471517235905
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -95,9 +96,22 @@ BoxCollider:
   m_GameObject: {fileID: 8781104471517235935}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &3318862097813041593
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8781104471517235935}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8781104471517235906
 Rigidbody:
@@ -136,6 +150,9 @@ MonoBehaviour:
   jumpscareRb: {fileID: 0}
   jumpscare: 50
   meshRender: {fileID: 0}
+  velocityText: {fileID: 0}
+  laju: 0
+  maxspeeeed: 0
 --- !u!114 &8781104471517235908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,3 +220,4 @@ MonoBehaviour:
   boostspeed: 50
   timers: 0
   CountDownText: {fileID: 0}
+  pmovement: {fileID: 0}

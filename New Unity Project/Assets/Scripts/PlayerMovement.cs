@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody jumpscareRb;
     public float jumpscare = 10;
     public MeshRenderer meshRender;
-    
+    public Text velocityText;
+
+    public float lajusamping;
     public float laju;
     public float maxspeeeed;
 
@@ -24,28 +27,38 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (rb.velocity.magnitude > maxspeeeed)
-        {
-            rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxspeeeed);
-        }
+        velocityText.text = rb.velocity.magnitude.ToString("0");
 
-        if (Input.GetKey("w") || Input.GetKey("up"))
+        Vector3 clampVel = rb.velocity;
+        clampVel.x = Mathf.Clamp(clampVel.x, -7, 7);
+        clampVel.z = Mathf.Clamp(clampVel.z, 0, 8);
+
+        rb.velocity = clampVel;
+
+        Vector3 clampRotation = tf.rotation.eulerAngles;
+        clampRotation.y = Mathf.Clamp(clampRotation.y, -30, 30);
+
+        rb.AddForce(0, 0, 20 * Time.deltaTime, ForceMode.VelocityChange);
+
+        if (Input.GetKey("s") || Input.GetKey("down"))
         {
-            rb.AddForce(0, 0, laju * Time.deltaTime, ForceMode.VelocityChange);
+            rb.AddForce(0, 0, -laju * Time.deltaTime, ForceMode.VelocityChange);
         }
 
         if (Input.GetKey("d") || Input.GetKey("right"))
         {
             // Geser kanan dan rotasi kanan
-            rb.AddForce(geraksamping * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            rb.AddForce(lajusamping * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             tf.Rotate(0, rotasi, 0);
+            clampRotation.y = Mathf.Clamp(clampRotation.y, -30, 30);
         }
 
         if (Input.GetKey("a") || Input.GetKey("left"))
         {
             // Geser kiri dan rotasi kiri
-            rb.AddForce(-geraksamping * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+            rb.AddForce(-lajusamping * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             tf.Rotate(0, -rotasi, 0);
+            clampRotation.y = Mathf.Clamp(clampRotation.y, -30, 30);
         }
 
         if (transform.position.y <= 0)
