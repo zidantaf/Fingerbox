@@ -8,6 +8,7 @@ public class Tutorial : MonoBehaviour
 {
     public Transform player;
     public GameObject mark1;
+    public GameObject mark2;
     public GameObject pengarah0;
     public GameObject pengarah15;
     public GameObject pengarah1;
@@ -23,10 +24,8 @@ public class Tutorial : MonoBehaviour
 
     public Rigidbody rb;
 
-    private static readonly string OpenTutorial = "OpenTutorial";
     private int openTutorialInt;
 
-    private bool isPengarahAkhir2 = false;
     private bool isPengarahAkhir = false;
     private bool isPengarahMati = false;
     private bool isPengarah0 = false;
@@ -55,6 +54,8 @@ public class Tutorial : MonoBehaviour
 
     public float timers;
     public Text CountDownText;
+
+    public float outZone = 8f;
 
     public PlayerMovement pmovement;
 
@@ -94,7 +95,7 @@ public class Tutorial : MonoBehaviour
                     rb.isKinematic = false;
                     pengarah1.SetActive(false);
                     StopCoroutine(IsPengarah1());
-                    rb.AddForce(0, 10f, 100f);
+                    rb.AddForce(0, 0, 200f);
                 }
 
                 if (isPengarah2 == true)
@@ -104,7 +105,7 @@ public class Tutorial : MonoBehaviour
                     isPengarah2 = false;
                     pengarah2.SetActive(false);
                     rb.isKinematic = false;
-                    rb.AddForce(0, 100f, 350f);
+                    rb.AddForce(0, 0, 200f);
                 }
 
                 if (isPengarah15 == true)
@@ -114,7 +115,7 @@ public class Tutorial : MonoBehaviour
                     pengarah15.SetActive(false);
                     rb.isKinematic = false;
                     isPengarah15 = false;
-                    rb.AddForce(0, 100f, 150f);
+                    rb.AddForce(0, 0, 200f);
                 }
 
                 if (isPengarah3 == true)
@@ -124,7 +125,7 @@ public class Tutorial : MonoBehaviour
                     pmovement.enabled = true;
                     pengarah3.SetActive(false);
                     rb.isKinematic = false;
-                    rb.AddForce(0, 100f, 250f);
+                    rb.AddForce(0, 0, 200f);
                 }
 
                 if (isPengarah4 == true)
@@ -134,15 +135,14 @@ public class Tutorial : MonoBehaviour
                     pmovement.enabled = true;
                     pengarah4.SetActive(false);
                     rb.isKinematic = false;
-                    rb.AddForce(0, 100f, 300f);
+                    rb.AddForce(0, 0, 200f);
                 }
 
                 if (isPengarahMati == true)
                 {
+                    
                     isPengarahMati = false;
-                    pengarahMati.SetActive(false);
-                    rb.isKinematic = false;
-                    rb.AddForce(0, 100f, 200f);
+                    rb.AddForce(0, 0, 200f);
                 }
 
                 if (isPengarahAkhir == true && isSekaliAkhir == false)
@@ -159,24 +159,57 @@ public class Tutorial : MonoBehaviour
 
             // Diatas adalah SPACE ----------------------------
 
-            if (player.position.x >= 8)
+            if (player.position.x >= outZone)
             {
-                rb.isKinematic = true;
-                float y = 2.14f;
-                transform.position = new Vector3(0, y, 0);
-                isPengarahMati = true;
+
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
                 pengarahMati.SetActive(true);
-                rb.AddForce(0, 100f, -250);
+                pengarahMati.GetComponent<Animator>().Play("PengarahMati");
+                
+                rb.AddForce(0, 50f, 200f);
+
+                if (isPengarahAkhir == true)
+                {
+                    transform.position = new Vector3(0, 2f, 132f);
+                    timers = 20;
+
+                    timerCountdown.SetActive(false);
+
+                    timerCountdown.SetActive(true);
+
+                }
+                else
+                {
+                    float y = 2.14f;
+                    transform.position = new Vector3(0, y, 0);
+                }
             }
         
-            if (player.position.x <= -8)
+            if (player.position.x <= -outZone)
             {
-                rb.isKinematic = true;
-                float y = 2.14f;
-                transform.position = new Vector3(0, y, 0);
-                isPengarahMati = true;
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
                 pengarahMati.SetActive(true);
-                rb.AddForce(0, 100f, -250);
+                pengarahMati.GetComponent<Animator>().Play("PengarahMati");
+
+                rb.AddForce(0, 50f, 200f);
+
+                if (isPengarahAkhir == true)
+                {
+                    transform.position = new Vector3(0, 2f, 132f);
+                    timers = 20;
+
+                    timerCountdown.SetActive(false);
+
+                    timerCountdown.SetActive(true);
+
+                }
+                else
+                {
+                    float y = 2.14f;
+                    transform.position = new Vector3(0, y, 0);
+                }
             }
             
 
@@ -184,9 +217,10 @@ public class Tutorial : MonoBehaviour
             {
                 mark1.SetActive(false);
             }
-            else
+
+            if (player.position.z >= 211f)
             {
-                mark1.SetActive(true);
+                mark2.SetActive(false);
             }
 
             if (timers <= 5)
@@ -202,6 +236,12 @@ public class Tutorial : MonoBehaviour
             {
                 transform.position = new Vector3(0, 2f, 132f);
                 timers = 20;
+
+                Vector3 zeroRot = new Vector3(0, 0, 0);
+
+                transform.Rotate(zeroRot);
+                rb.AddForce(0, 0, 100f);
+                pmovement.enabled = true;
             }
         }
     }
@@ -279,6 +319,8 @@ public class Tutorial : MonoBehaviour
                     rb.isKinematic = true;
                     pengarahAkhir.SetActive(true);
                     timerCountdown.SetActive(true);
+
+                    mark2.SetActive(true);
                 }
             }
         } 
@@ -337,16 +379,6 @@ public class Tutorial : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void PlayerDeadTutorial()
-    {
-        PlayerPrefs.SetInt(OpenTutorial, +1);
-    }
-
-    public void FinishTutorial()
-    {
-        PlayerPrefs.SetInt(OpenTutorial, 0);
-    }
-
     IEnumerator IsPengarah1()
     {
         float sekian = 0.5f;
@@ -354,43 +386,12 @@ public class Tutorial : MonoBehaviour
         isPengarah1 = true;
     }
 
-    IEnumerator IsPengarahAkhir()
-    {
-        yield return new WaitForSeconds(1);
-        isPengarahAkhir2 = true;
-    }
-
-    IEnumerator IsPengarah15False()
-    {
-        yield return new WaitForSeconds(1);
-        isPengarah15 = false;
-    }
-
-    IEnumerator IsPengarah2False()
-    {
-        yield return new WaitForSeconds(2);
-        isPengarah2 = false;
-    }
-
-    IEnumerator IsPengarah3False()
-    {
-        yield return new WaitForSeconds(1);
-        isPengarah3 = false;
-    }
-
-    IEnumerator IsPengarah4False()
-    {
-        yield return new WaitForSeconds(1);
-        isPengarah4 = false;
-    }
-
     public void LevelComplete()
     {
         completeLevelUi.SetActive(true);
         BGSong.SetActive(false);
     }
-
-    private float waiting = 2.1f;
+    
     private float waiting2 = 1.5f;
 
     private float star1 = 2.0f;
